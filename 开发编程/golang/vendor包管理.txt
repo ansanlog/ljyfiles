@@ -1,0 +1,17 @@
+可以辅助的帮助我们进行vendor管理
+/*go get -u -v github.com/kardianos/govendor*/
+go get github.com/kardianos/govendor
+
+到项目下，执行一下命令就可以生成vendor文件夹：
+
+$ govendor init
+$ ls
+main.go    vendor
+$ cd vendor/
+$ ls
+vendor.json
+这个 vendor.json 会类似 godep 工具中的描述文件版本的功能。接下来，需要执行命令将当前应用必须的文件包含进来
+
+$ govendor add +external
+
+如果需要更新或移除，可以参考一下工具的具体文档使用 update 或者 remove 命令即可。这样会在vendor目录下将必须的编译文件移入进来（注意：测试所需依赖并不包含，依赖项目的测试文件也不会包含）。
